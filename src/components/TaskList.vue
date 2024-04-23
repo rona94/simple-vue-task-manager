@@ -15,8 +15,9 @@
   </script>
   
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .task-list {
+  border: 1px solid #fff;
   background-color: #fff;
   border-radius: 4px;
   margin-bottom: 10px;
@@ -39,6 +40,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.task-list--temp {
+  background-color: rgba(255,255,255,0.5);
+  border-style: dashed;
 }
 </style>
   
