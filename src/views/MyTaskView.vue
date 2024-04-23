@@ -1,6 +1,6 @@
 <template>
   <div ref="task" class="home task-manager-wrap">
-    <div v-for="status in tasks_status" :key="status.id" class="task-manager" :class="`task-manager--${status.status}`">
+    <div v-for="status in tasks_status" :key="status.id" class="task-manager" :data-status="status.status" :class="`task-manager--${status.status}`">
       <div class="box">
         <div class="box__title">{{ status.name }}</div>
         <div class="box__content">
@@ -50,11 +50,21 @@ export default {
       })
       .catch(err => console.log(err))
     },
+    async updateData(id, status) {
+      fetch("http://localhost:8000/tasks/"+id, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          status
+        })
+      })
+    },
     onLoad() {
       let task = document.querySelectorAll(".task-manager .box__content")
       let taskList = document.querySelectorAll(".task-manager .task-list");
 
-      console.log(taskList)
       taskList.forEach(element => {
         element.addEventListener('dragstart', this.onDragStart);
       })
@@ -70,31 +80,16 @@ export default {
     },
     onDragOver(e) {
       e.preventDefault();
-
-      // let element = document.querySelector(".task-list--temp");
-      // if(element)
-      //   element.parentNode.removeChild(element);
-      
-
-      // if(e.target.classList.contains('task-list')) {
-      //   // if(e.offsetY <= e.target.offsetHeight/2) {
-      //   //   e.target.parentNode.insertBefore(source, e.target)
-      //   // }
-      //   // else {
-      //   //   e.target.parentNode.insertBefore(source, e.target.nextSibling)
-      //   // }
-      // }
-      // else {
-      //   let taskListTemp = document.createElement("div")
-      //   taskListTemp.className = "task-list task-list--temp"
-      //   e.currentTarget.appendChild(taskListTemp);
-      // }
     },
     onDrop(e) {
       e.preventDefault();
       
       const data = e.dataTransfer.getData("text");
       const source = document.getElementById(data);
+
+      const id = data.replace("task-list--", "")
+      const status = e.target.closest(".task-manager").getAttribute("data-status")
+      this.updateData(id, status)
 
       if(e.target.classList.contains('task-list')) {
         if(e.offsetY <= e.target.offsetHeight/2) {
@@ -115,41 +110,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.task-manager-wrap {
-  display: flex;
-}
-.task-manager {
-  padding: 15px;
-  height: 500px;
-  flex-grow: 1;
-  max-width: 33.333%;
-  box-sizing: border-box;
-}
-.task-manager .box {
-  background-color: var(--color-gray);
-  height: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.box__title {
-  padding: 12px 15px;
-  text-align: center;
-  font-weight: bold;
-  color: #fff;
-}
-.task-manager--assigned .box__title {
-  background: rgb(240, 64, 64);
-}
-.task-manager--ongoing .box__title {
-  background: rgb(243, 174, 35);
-}
-.task-manager--completed .box__title {
-  background: var(--color-green);
-}
-.box__content {
-  padding: 15px;
-  height: calc(100% - 46px);
-}
-</style>

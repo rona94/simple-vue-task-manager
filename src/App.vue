@@ -13,13 +13,6 @@
 </template>
 
 <style>
-:root {
-  --color-green: #42b983;
-  --color-gray: #2c3e50;
-}
-html, body {
-  margin: 0;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

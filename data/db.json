@@ -20,13 +20,13 @@
     {
       "id": "1",
       "name": "Task 1",
-      "status": "assigned",
+      "status": "ongoing",
       "task_by": "Rona"
     },
     {
       "id": "2",
       "name": "Task 2",
-      "status": "assigned",
+      "status": "ongoing",
       "task_by": "Lyn"
     },
     {
