@@ -1,6 +1,6 @@
 <template>
   <div ref="task" class="home task-manager-wrap">
-    <div v-for="status in tasks_status" :key="status.id" class="task-manager" :class="`task-manager--${status.status}`">
+    <div v-for="status in tasks_status" :key="status.id" class="task-manager" :data-status="status.status" :class="`task-manager--${status.status}`">
       <div class="box">
         <div class="box__title">{{ status.name }}</div>
         <div class="box__content">
@@ -49,23 +49,21 @@ export default {
       })
       .catch(err => console.log(err))
     },
-    updateData() {
-      fetch("http://localhost:8000/tasks")
-      .then(res => res.json())
-      .then(res => {
-        this.data = res
-
-        this.$nextTick(() => {
-          this.onLoad()
+    async updateData(id, status) {
+      fetch("http://localhost:8000/tasks/"+id, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          status
         })
       })
-      .catch(err => console.log(err))
     },
     onLoad() {
       let task = document.querySelectorAll(".task-manager .box__content")
       let taskList = document.querySelectorAll(".task-manager .task-list");
 
-      console.log(taskList)
       taskList.forEach(element => {
         element.addEventListener('dragstart', this.onDragStart);
       })
@@ -106,6 +104,10 @@ export default {
       
       const data = e.dataTransfer.getData("text");
       const source = document.getElementById(data);
+
+      const id = data.replace("task-list--", "")
+      const status = e.target.closest(".task-manager").getAttribute("data-status")
+      this.updateData(id, status)
 
       if(e.target.classList.contains('task-list')) {
         if(e.offsetY <= e.target.offsetHeight/2) {
