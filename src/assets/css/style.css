@@ -5,6 +5,66 @@
 html, body {
     margin: 0;
 }
+.pull-right {
+    float: right;
+}
+
+/* button */
+.btn {
+    background: var(--color-green);
+    border: 1px solid var(--color-green);
+    padding: 8px 15px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* input */
+.input,
+.textarea {
+    padding: 8px 10px;
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid #333;
+    margin-bottom: 10px;
+}
+.textarea {
+    resize: none;
+}
+
+/* modal */
+.modal-title {
+    text-align: center;
+    font-weight: bold;
+}
+.modal-name,
+.modal-desc,
+.modal-label{
+    margin: 0
+}
+.modal-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.modal-label {
+    font-size: 12px;
+}
+.modal-desc {
+    white-space: pre;
+}
+.modal-col {
+    display: inline-block;
+    min-width: 80px;
+}
+.modal-text,
+.modal-desc {
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
 
 /* task manager  */
 .task-manager-wrap {

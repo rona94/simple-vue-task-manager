@@ -16,42 +16,58 @@
       "name": "Completed"
     }
   ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Lyn"
+    },
+    {
+      "id": "2",
+      "name": "Rona"
+    }
+  ],
   "tasks": [
     {
       "id": "1",
       "name": "Task 1",
       "status": "assigned",
-      "task_by": "Rona"
+      "task_by": "2",
+      "description": "Lorem Ipsum"
     },
     {
       "id": "2",
       "name": "Task 2",
       "status": "assigned",
-      "task_by": "Lyn"
+      "task_by": "2",
+      "description": "Lorem Ipsum"
     },
     {
       "id": "3",
       "name": "Task 3",
       "status": "ongoing",
-      "task_by": "Lyn"
+      "task_by": "1",
+      "description": "Lorem Ipsum"
     },
     {
       "id": "4",
       "name": "Task 4",
       "status": "ongoing",
-      "task_by": "Lyn"
+      "task_by": "1",
+      "description": "Lorem Ipsum"
     },
     {
       "id": "5",
       "name": "Task 5",
       "status": "completed",
-      "task_by": "Lyn"
+      "task_by": "1",
+      "description": "Lorem Ipsum"
     },
     {
       "id": "6",
       "name": "Task 6",
       "status": "completed",
-      "task_by": "Rona"
+      "task_by": "2",
+      "description": "Lorem Ipsum"
     }
   ]
 }
