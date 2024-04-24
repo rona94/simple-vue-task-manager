@@ -3,7 +3,7 @@
     <aside class="sidebar">
       <ul>
         <li><router-link to="/">Tasks</router-link></li>
-        <li><router-link to="/mytask">My Task</router-link></li>
+        <!-- <li><router-link to="/mytask">My Task</router-link></li> -->
       </ul>
     </aside>
     <main class="main">
