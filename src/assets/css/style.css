@@ -100,5 +100,6 @@ html, body {
 }
 .box__content {
     padding: 15px;
-    height: calc(100% - 46px);
+    height: calc(100% - 76px);
+    overflow-y: auto;
 }

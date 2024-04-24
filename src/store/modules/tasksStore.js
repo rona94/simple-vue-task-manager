@@ -2,10 +2,14 @@ import axios from 'axios'
 
 export default {
   state: {
+    task: {},
     tasks: [],
     tasks_status: []
   },
   getters: {
+    getTask: (state) => {
+      return state.task 
+    },
     getTasks: (state) => {
       return state.tasks 
     },
@@ -14,6 +18,9 @@ export default {
     }
   },
   mutations: {
+    SAVE_TASK: (state, data) => {
+      state.task = data
+    },
     SAVE_TASKS: (state, data) => {
       state.tasks = data
     },
@@ -22,6 +29,16 @@ export default {
     }
   },
   actions: {
+    fetchTask({commit}, id) {
+      axios
+      .get('http://localhost:8000/tasks/'+id)
+      .then(res => {
+        commit('SAVE_TASK', res.data)
+      })
+      .catch(error => {
+        throw new Error(`API ${error}`);
+      })
+    },
     fetchTasks({commit}) {
       axios
       .get('http://localhost:8000/tasks')

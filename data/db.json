@@ -68,20 +68,6 @@
       "status": "completed",
       "task_by": "2",
       "description": "Lorem Ipsum"
-    },
-    {
-      "id": "1f60",
-      "name": "Test",
-      "status": "assigned",
-      "task_by": "2",
-      "description": "lorem"
-    },
-    {
-      "id": "0e39",
-      "name": "Test",
-      "status": "assigned",
-      "task_by": "1",
-      "description": "sdfdsf"
     }
   ]
 }
