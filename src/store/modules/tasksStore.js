@@ -49,14 +49,6 @@ export default {
         throw new Error(`API ${error}`);
       })
     },
-    updateTask({commit}, data) {
-      console.log(commit,data)
-      axios
-      .patch(
-        '/tasks/'+data.id, 
-        data.data
-      )
-    },
     fetchTasksStatus({commit}) {
       axios
       .get('/tasks_status')
@@ -66,6 +58,14 @@ export default {
       .catch(error => {
         throw new Error(`API ${error}`);
       })
+    },
+    updateTask({commit}, data) {
+      console.log(commit,data)
+      axios
+      .patch(
+        '/tasks/'+data.id, 
+        data.data
+      )
     },
     addTask({commit}, data) {
       console.log(commit, data)
