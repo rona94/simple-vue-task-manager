@@ -41,6 +41,7 @@ export default {
     },
     closeModal(value) {
       this.isModalVisible = value
+      this.fetchTasks()
     },
     closeAddModal(value) {
       this.isAddModalVisible = value

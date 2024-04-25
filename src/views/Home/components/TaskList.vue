@@ -1,11 +1,11 @@
 <template>
   <div ref="task" class="home task-manager-wrap">
-    <div v-for="status in tasksStatus" :key="status.id" class="task-manager" :data-status="status.status" :class="`task-manager--${status.status}`">
+    <div v-for="status in tasksStatus" :key="status.id" class="task-manager" :data-status-id="status.id" :class="`task-manager--${status.status}`">
         <div class="box">
           <div class="box__title">{{ status.name }}</div>
           <div class="box__content">
             <template v-for="item in data" :key="item.id">
-              <TaskList :id="item.id" :text="item.name" v-if="item.status == status.status" @click="openModal(item.id)" />
+              <TaskList :id="item.id" :text="item.name" v-if="item.status_id == status.id" @click="openModal(item.id)" />
             </template>
           </div>
         </div>
@@ -36,11 +36,14 @@ export default {
   },
   methods: {
     ...mapActions(["fetchTasksStatus", "updateTask"]),
-    async updateData(id, status) {
+    async updateData(id, statusID) {
       const data = {
         id,
-        data: { status }
+        data: { 
+          status_id: statusID 
+        }
       }
+
       this.updateTask(data)
     },
     openModal(value) {
@@ -73,8 +76,8 @@ export default {
       const source = document.getElementById(data);
 
       const id = data.replace("task-list--", "")
-      const status = e.target.closest(".task-manager").getAttribute("data-status")
-      this.updateData(id, status)
+      const statusID = e.target.closest(".task-manager").getAttribute("data-status-id")
+      this.updateData(id, statusID)
 
       if(e.target.classList.contains('task-list')) {
         if(e.offsetY <= e.target.offsetHeight/2) {

@@ -6,12 +6,12 @@
       "name": "Assigned"
     },
     {
-      "id": "1",
+      "id": "2",
       "status": "ongoing",
       "name": "On Going"
     },
     {
-      "id": "1",
+      "id": "3",
       "status": "completed",
       "name": "Completed"
     }
@@ -30,42 +30,42 @@
     {
       "id": "1",
       "name": "Task 1",
-      "status": "assigned",
+      "status_id": "1",
       "task_by": "1",
-      "description": "Lorem Ipsum"
+      "description": "Lorem Ipsum\n\n"
     },
     {
       "id": "2",
       "name": "Task 2",
-      "status": "assigned",
+      "status_id": "1",
       "task_by": "2",
       "description": "Lorem Ipsum"
     },
     {
       "id": "3",
       "name": "Task 3",
-      "status": "ongoing",
+      "status_id": "2",
       "task_by": "2",
       "description": "Lorem Ipsum"
     },
     {
       "id": "4",
       "name": "Task 4",
-      "status": "ongoing",
+      "status_id": "2",
       "task_by": "1",
       "description": "Lorem Ipsum"
     },
     {
       "id": "5",
       "name": "Task 5",
-      "status": "completed",
+      "status_id": "3",
       "task_by": "1",
       "description": "Lorem Ipsum"
     },
     {
       "id": "6",
       "name": "Task 6",
-      "status": "completed",
+      "status_id": "3",
       "task_by": "2",
       "description": "Lorem Ipsum"
     }

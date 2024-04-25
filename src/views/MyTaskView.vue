@@ -9,7 +9,7 @@
           <div class="box__title">{{ status.name }}</div>
           <div class="box__content">
             <template v-for="item in data" :key="item.id">
-              <TaskList :id="item.id" :text="item.name" v-if="item.status == status.status && item.task_by == taskBy" @click="openModalTask(item)" />
+              <TaskList :id="item.id" :text="item.name" v-if="item.status_id == status.id && item.task_by == taskBy" @click="openModalTask(item)" />
             </template>
           </div>
         </div>

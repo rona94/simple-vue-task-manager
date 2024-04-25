@@ -8,18 +8,31 @@
           <p class="modal-label">
             <span class="modal-col">Assignee</span>
             <span class="modal-text input-label-input">
-              <select ref="name" name="name">
-                <option value="Lyn" selected>Lyn</option>
-                <option value="Rona">Rona</option>
-              </select>
+              <InputForm 
+                type="select" 
+                :value="user.id" 
+                name="task_by"
+                :lists="users"
+                @update="handleInputUpdate" />
             </span>
           </p>
           <p class="modal-label">
             <span class="modal-col">Status</span>
-            <span class="modal-text">{{ data.status }}</span>
+            <span class="modal-text input-label-input">
+              <InputForm 
+                type="select" 
+                :value="data.status_id" 
+                name="status_id"
+                :lists="tasks_status"
+                @update="handleInputUpdate" />
+            </span>
           </p>
           <p class="modal-label">Description</p>
-          <p class="modal-desc">{{ data.description }}</p>
+          <InputForm 
+            type="textarea" 
+            :value="data.description" 
+            name="description"
+            @update="handleInputUpdate" />
         </template>
     </TaskModal>
   </template>
@@ -27,6 +40,7 @@
   <script>
   import { mapGetters, mapActions } from 'vuex'
   import TaskModal from '@/components/TaskModal.vue'
+  import InputForm from './InputForm.vue'
   
   export default {
     props: ["visible", "id"],
@@ -37,24 +51,26 @@
       }
     },
     components: {
-      TaskModal
+      TaskModal,
+      InputForm
     },
     watch: {
         visible(newValue) {
           this.isModalVisible = newValue
-        },
-        id(newValue) {
-          this.fetchTask(newValue)
+          
+          if(newValue) {
+            this.fetchTask(this.id)
+          }
         },
         data(newValue) {
           this.fetchUser(newValue.task_by)
         }
     },
     computed: {
-      ...mapGetters({data: "getTask", user: "getUser"})
+      ...mapGetters({data: "getTask", user: "getUser", users: "getUsers", tasks_status: "getTasksStatus"})
     },
     methods: {
-      ...mapActions(["fetchTask", "fetchUser"]),
+      ...mapActions(["fetchTask", "fetchUser", "updateTask"]),
       closeModal(value) {
         this.$emit("closeModal", value)
       },
@@ -65,6 +81,15 @@
             this.$refs.name.focus()
           )
         }
+      },
+      handleInputUpdate(type, value) {
+        const data = {
+          id: this.id,
+          data: {
+            [type]: value
+          }
+        }
+        this.updateTask(data)
       }
     },
   }

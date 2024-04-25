@@ -71,7 +71,7 @@
 
         const data = {
             "name": name.value,
-            "status": "assigned",
+            "status_id": "1",
             "task_by": assigned.value,
             "description": desc.value
         }
