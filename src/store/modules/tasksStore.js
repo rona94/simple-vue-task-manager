@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "@/config/axios.js"
 
 export default {
   state: {
@@ -31,7 +31,7 @@ export default {
   actions: {
     fetchTask({commit}, id) {
       axios
-      .get('http://localhost:8000/tasks/'+id)
+      .get('/tasks/'+id)
       .then(res => {
         commit('SAVE_TASK', res.data)
       })
@@ -41,7 +41,7 @@ export default {
     },
     fetchTasks({commit}) {
       axios
-      .get('http://localhost:8000/tasks')
+      .get('/tasks')
       .then(res => {
         commit('SAVE_TASKS', res.data)
       })
@@ -53,13 +53,13 @@ export default {
       console.log(commit,data)
       axios
       .patch(
-        'http://localhost:8000/tasks/'+data.id, 
+        '/tasks/'+data.id, 
         data.data
       )
     },
     fetchTasksStatus({commit}) {
       axios
-      .get('http://localhost:8000/tasks_status')
+      .get('/tasks_status')
       .then(res => {
         commit('SAVE_TASKS_STATUS', res.data)
       })
@@ -69,7 +69,7 @@ export default {
     },
     addTask({commit}, data) {
       console.log(commit, data)
-      axios.post('http://localhost:8000/tasks', data)
+      axios.post('/tasks', data)
     }
   },
 }

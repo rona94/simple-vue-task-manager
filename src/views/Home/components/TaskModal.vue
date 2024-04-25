@@ -7,7 +7,12 @@
           <p class="modal-name">{{ data.name }}</p>
           <p class="modal-label">
             <span class="modal-col">Assignee</span>
-            <span class="modal-text">{{ user.name }}</span>
+            <span class="modal-text input-label-input">
+              <select ref="name" name="name">
+                <option value="Lyn" selected>Lyn</option>
+                <option value="Rona">Rona</option>
+              </select>
+            </span>
           </p>
           <p class="modal-label">
             <span class="modal-col">Status</span>
@@ -28,6 +33,7 @@
     data() {
       return {
         isModalVisible: this.visible,
+        isNameEdit: false,
       }
     },
     components: {
@@ -52,9 +58,40 @@
       closeModal(value) {
         this.$emit("closeModal", value)
       },
+      handleDblClick(e, type) {
+        if(type=="name") {
+          this.isNameEdit = true
+          this.$nextTick(() => 
+            this.$refs.name.focus()
+          )
+        }
+      }
     },
   }
   </script>
   
-  <style scoped>
-  </style>
+<style scoped>
+.input-label-edit {
+  cursor: pointer;
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none; 
+  user-select: none;
+}
+.input-label-edit,
+.input-label-input > * {
+  font-size: 16px;
+  color: #333;
+}
+.input-label-input > select {
+  border: 0;
+  font-size: 15px;
+  font-weight: normal;
+}
+.input-label-input > select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+</style>

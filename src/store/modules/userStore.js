@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "@/config/axios.js"
 
 export default {
   state: {
@@ -24,7 +24,7 @@ export default {
   actions: {
     fetchUsers({commit}) {
       axios
-      .get('http://localhost:8000/users')
+      .get('/users')
       .then(res => {
         commit('SAVE_USERS', res.data)
       })
@@ -34,7 +34,7 @@ export default {
     },
     fetchUser({commit}, id) {
       axios
-      .get('http://localhost:8000/users/'+id)
+      .get('/users/'+id)
       .then(res => {
         commit('SAVE_USER', res.data)
       })
