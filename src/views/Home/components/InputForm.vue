@@ -32,12 +32,9 @@ export default {
     },
     adjustHeight(e) {
       const el = e.target
-      el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)+"px" : "100px";
+      el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)+"px" : "60px";
     }
   },
-  mounted() {
-    console.log(this.name)
-  }
 }
 </script>
   
@@ -48,7 +45,7 @@ export default {
 }
 .textarea {
   width: 100%;
-  height: 100px;
+  height: 60px;
   border: 0;
   padding: 0;
   margin-top: 10px;

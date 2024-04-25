@@ -29,7 +29,7 @@ export default {
         commit('SAVE_USERS', res.data)
       })
       .catch(error => {
-        throw new Error(`API ${error}`);
+        throw (`API ${error}`);
       })
     },
     fetchUser({commit}, id) {
@@ -39,7 +39,7 @@ export default {
         commit('SAVE_USER', res.data)
       })
       .catch(error => {
-        throw new Error(`API ${error}`);
+        throw (`API ${error}`);
       })
     }
   },

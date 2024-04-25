@@ -33,6 +33,7 @@
             :value="data.description" 
             name="description"
             @update="handleInputUpdate" />
+          <CommentBox :id="id" />
         </template>
     </TaskModal>
   </template>
@@ -41,6 +42,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import TaskModal from '@/components/TaskModal.vue'
   import InputForm from './InputForm.vue'
+  import CommentBox from './CommentBox.vue'
   
   export default {
     props: ["visible", "id"],
@@ -52,7 +54,8 @@
     },
     components: {
       TaskModal,
-      InputForm
+      InputForm,
+      CommentBox,
     },
     watch: {
         visible(newValue) {

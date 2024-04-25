@@ -69,5 +69,13 @@
       "task_by": "2",
       "description": "Lorem Ipsum"
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "task_id": "1",
+      "comment_by": "Lyn",
+      "comment": "Lorem Ipsum"
+    }
   ]
 }

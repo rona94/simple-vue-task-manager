@@ -36,7 +36,7 @@ export default {
         commit('SAVE_TASK', res.data)
       })
       .catch(error => {
-        throw new Error(`API ${error}`);
+        throw (`API ${error}`);
       })
     },
     fetchTasks({commit}) {
@@ -46,7 +46,7 @@ export default {
         commit('SAVE_TASKS', res.data)
       })
       .catch(error => {
-        throw new Error(`API ${error}`);
+        throw (`API ${error}`);
       })
     },
     fetchTasksStatus({commit}) {
@@ -56,7 +56,7 @@ export default {
         commit('SAVE_TASKS_STATUS', res.data)
       })
       .catch(error => {
-        throw new Error(`API ${error}`);
+        throw (`API ${error}`);
       })
     },
     updateTask({commit}, data) {
